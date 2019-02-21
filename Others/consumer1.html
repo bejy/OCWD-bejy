@@ -15,9 +15,58 @@
   <link href="css/mdb.min.css" rel="stylesheet">
   <!-- Your custom styles (optional) -->
   <link href="css/style.css" rel="stylesheet">
+
 </head>
 <body>
 <form method="post" action="consumer.php"/>
+<!--Main Navigation-->
+<header>
+  <nav class="navbar fixed-top navbar-expand-lg navbar-dark pink scrolling-navbar">
+    <a class="navbar-brand" href="#"><strong>Water District</strong></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Billing</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Payment</a>
+        </li>
+        <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+          aria-expanded="false">Others</a>
+		<div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+			<a class="dropdown-item" href="rates.html">Rates/Discounts/Penalties</a>
+        </div>
+      </li>
+	 </ul>
+    </div>
+  </nav>
+</header>
+<br>
+<div class="row">
+  <div class="col-md-12">
+    <ul class="stepper stepper-horizontal">
+      <li>
+      </li>
+      <li class="active">
+        <a href="consumer2.html">
+          <span class="circle">1</span>
+          <span class="label">First Step</span>
+        </a>
+      </li>
+      <li>
+      </li>
+    </ul>
+  </div>
+</div>
+
 <center>
 <table width="700px">
 <td>
@@ -85,10 +134,11 @@
 		<label>Spouse's Name  </label>
 		<input  class="form-control form-control-sm" type="text" name="spousename" required="required"/></br>
 		</div>
-	</div>
+	
 		<div class="col-md-3">
-			<input type="submit" name="next1" value="Next"></br>
+			<input type="submit" name="next1" value="Next"></br></br></br>
 		</div>
+	</div>
 </td>
 </table>
 </center>

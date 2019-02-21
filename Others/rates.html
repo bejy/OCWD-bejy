@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta http-equiv="x-ua-compatible" content="ie=edge">
+  <title>CWD</title>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
+  <!-- Bootstrap core CSS -->
+  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <!-- Material Design Bootstrap -->
+  <link href="css/mdb.min.css" rel="stylesheet">
+  <!-- Your custom styles (optional) -->
+  <link href="css/style.css" rel="stylesheet">
+</head>
+
+<body>
+<form method="post" action=""/>
+<header>
+  <nav class="navbar fixed-top navbar-expand-lg navbar-dark pink scrolling-navbar">
+    <a class="navbar-brand" href="#"><strong>Water District</strong></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="index.html">Home <span class="sr-only">(current)</span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Billing</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Payment</a>
+        </li>
+        <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+          aria-expanded="false">Others</a>
+		<div class="dropdown-menu dropdown-primary" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="rates.html">Rates/Discounts/Penalties</a>
+        </div>
+      </li>
+	 </ul>
+    </div>
+  </nav>
+</header>
+<div class="row">
+  <div class="col-md-12">
+    <ul class="stepper stepper-horizontal">
+      <li>
+      </li>
+      <li class="active">
+        <a href="consumer2.html">
+          <span class="circle">.</span>
+          <span class="label">Rates-Discounts-Penalties</span>
+        </a>
+      </li>
+      <li>
+      </li>
+    </ul>
+  </div>
+</div>
+<center>
+<table width="700px">
+<td>
+	<table id="dtBasicExample" class="table table-striped table-bordered" cellspacing="0" width="100%">
+    <thead>
+      <tr>
+        <th class="th-sm">Account Number
+
+        </th>
+        <th class="th-sm">Name
+
+        </th>
+        <th class="th-sm">Address
+
+        </th>
+        <th class="th-sm">Meter Number
+
+        </th>
+		<th class="th-sm">Action
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+     <?php while ($row = mysqli_fetch_array($results)) { ?>
+		<tr>
+			<td><?php echo $row['name']; ?></td>
+			<td><?php echo $row['address']; ?></td>
+			<td><?php echo $row['phonenum']; ?></td>
+			<td><?php echo $row['phonenum']; ?></td>
+			<td>
+			<div class="row">
+				<div class="col-md-3">
+					<div class="text-center">
+						<a href="welcome.php?edit=<?php echo $row['id']; ?>" class="edit_btn" ><button class="btn btn-info btn-rounded btn-sm buttonEdit">Edit</a>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="text-center">
+						<a href="server1.php?del=<?php echo $row['id']; ?>" class="del_btn"><button class="btn btn-danger btn-sm btn-rounded buttonDelete">Delete</a>
+					</div>
+				</div>
+			</div>
+			</td>
+		</tr>
+	<?php } ?>
+    </tbody>
+	 <tbody>
+     <?php while ($row = mysqli_fetch_array($results)) { ?>
+		<tr>
+			<td><?php echo $row['name']; ?></td>
+			<td><?php echo $row['address']; ?></td>
+			<td><?php echo $row['phonenum']; ?></td>
+			<td><?php echo $row['phonenum']; ?></td>
+			<td>
+			<div class="row">
+				<div class="col-md-3">
+					<div class="text-center">
+						<a href="welcome.php?edit=<?php echo $row['id']; ?>" class="edit_btn" ><button class="btn btn-info btn-rounded btn-sm buttonEdit">Edit</a>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="text-center">
+						<a href="server1.php?del=<?php echo $row['id']; ?>" class="del_btn"><button class="btn btn-danger btn-sm btn-rounded buttonDelete">Delete</a>
+					</div>
+				</div>
+			</div>
+			</td>
+		</tr>
+	<?php } ?>
+    </tbody>
+	 <tbody>
+     <?php while ($row = mysqli_fetch_array($results)) { ?>
+		<tr>
+			<td><?php echo $row['name']; ?></td>
+			<td><?php echo $row['address']; ?></td>
+			<td><?php echo $row['phonenum']; ?></td>
+			<td><?php echo $row['phonenum']; ?></td>
+			<td>
+			<div class="row">
+				<div class="col-md-3">
+					<div class="text-center">
+						<a href="welcome.php?edit=<?php echo $row['id']; ?>" class="edit_btn" ><button class="btn btn-info btn-rounded btn-sm buttonEdit">Edit</a>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<div class="text-center">
+						<a href="server1.php?del=<?php echo $row['id']; ?>" class="del_btn"><button class="btn btn-danger btn-sm btn-rounded buttonDelete">Delete</a>
+					</div>
+				</div>
+			</div>
+			</td>
+		</tr>
+	<?php } ?>
+    </tbody>
+</td>
+</table>
+</center>
+  <!-- SCRIPTS -->
+  <!-- JQuery -->
+  <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
+  <!-- Bootstrap tooltips -->
+  <script type="text/javascript" src="js/popper.min.js"></script>
+  <!-- Bootstrap core JavaScript -->
+  <script type="text/javascript" src="js/bootstrap.min.js"></script>
+  <!-- MDB core JavaScript -->
+  <script type="text/javascript" src="js/mdb.js"></script>
+</body>
+
+</html>
