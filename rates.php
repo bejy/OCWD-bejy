@@ -35,7 +35,7 @@
           <a class="nav-link" href="#">Billing</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Payment</a>
+          <a class="nav-link" href="payment.php">Payment</a>
         </li>
         <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
@@ -91,18 +91,17 @@
 			<div class="row">
 				<div class="col-md-3">
 					<div class="text-center">
-						<a href="welcome.php?edit=<?php echo $row['id']; ?>" class="edit_btn" ><button class="btn btn-info btn-rounded btn-sm buttonEdit">Edit</a>
+						<input type="submit" name="editi1" class="btn btn-info btn-rounded btn-sm buttonEdit" value="Edit">
 					</div>
 				</div>
 				<div class="col-md-4">
 					<div class="text-center">
-						<a href="server1.php?del=<?php echo $row['id']; ?>" class="del_btn"><button class="btn btn-danger btn-sm btn-rounded buttonDelete">Delete</a>
+						<input type="submit" name="del1" class="btn btn-danger btn-sm btn-rounded buttonDelete" value="Delete">
 					</div>
 				</div>
 			</div>
 			</td>
 		</tr>
-			<table id="dtBasicExample" class="table table-striped table-bordered" cellspacing="0" width="100%">
     <thead>
       <tr>
         <th class="th-sm">Senior
@@ -124,17 +123,18 @@
 			<div class="row">
 				<div class="col-md-3">
 					<div class="text-center">
-						<a href="welcome.php?edit=<?php echo $row['id']; ?>" class="edit_btn" ><button class="btn btn-info btn-rounded btn-sm buttonEdit">Edit</a>
+						<input type="submit" name="edit2" class="btn btn-info btn-rounded btn-sm buttonEdit" value="Edit">
 					</div>
 				</div>
 				<div class="col-md-4">
 					<div class="text-center">
-						<a href="server1.php?del=<?php echo $row['id']; ?>" class="del_btn"><button class="btn btn-danger btn-sm btn-rounded buttonDelete">Delete</a>
+						<input type="submit" name="del2" class="btn btn-danger btn-sm btn-rounded buttonDelete" value="Delete">
 					</div>
 				</div>
 			</div>
 			</td>
 		</tr>
+	<thead>
 		 <tr>
         <th class="th-sm">Penalty
 
@@ -153,20 +153,18 @@
 			<div class="row">
 				<div class="col-md-3">
 					<div class="text-center">
-						<a href="welcome.php?edit=<?php echo $row['id']; ?>" class="edit_btn" ><button class="btn btn-info btn-rounded btn-sm buttonEdit">Edit</a>
+						<input type="submit"  name="edit3" class="btn btn-info btn-rounded btn-sm buttonEdit" value="Edit">
 					</div>
 				</div>
 				<div class="col-md-4">
 					<div class="text-center">
-						<a href="server1.php?del=<?php echo $row['id']; ?>" class="del_btn"><button class="btn btn-danger btn-sm btn-rounded buttonDelete">Delete</a>
+						<input type="submit" namee="del3" class="btn btn-danger btn-sm btn-rounded buttonDelete" value="Delete">
 					</div>
 				</div>
 			</div>
 			</td>
 		</tr>
 	<?php } ?>
-    </tbody>
-
     </tbody>
 </td>
 </table>

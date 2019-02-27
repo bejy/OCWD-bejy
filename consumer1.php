@@ -7,8 +7,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
   <title>WD</title>
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
   <!-- Bootstrap core CSS -->
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <!-- Material Design Bootstrap -->
@@ -36,7 +34,7 @@
           <a class="nav-link" href="#">Billing</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Payment</a>
+          <a class="nav-link" href="payment.php">Payment</a>
         </li>
         <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
@@ -217,11 +215,11 @@
 		</div>
 	</div>
 	<div class="form-row">
-		<div class="col-md-2">
-			<label></label>
+			</br>
 			<div class="col-md-3">
-			<input type="submit" name="next1" value="Next"></br></br></br>
+			<input class="btn btn-info btn-rounded btn-sm" type="submit" name="next1" value="Next"></br></br></br>
 		</div></br></br></br>
+	</div>
 </td>
 </table>
 </center>

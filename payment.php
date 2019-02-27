@@ -1,4 +1,3 @@
-<?php include('consumer.php')?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -15,7 +14,6 @@
   <link href="css/mdb.min.css" rel="stylesheet">
   <!-- Your custom styles (optional) -->
   <link href="css/style.css" rel="stylesheet">
-   <link href="css/body.css" rel="stylesheet">
 </head>
 
 <body>
@@ -47,116 +45,62 @@
         </div>
       </li>
 	 </ul>
-	  <div class="row">
-		<div class="col-md-12">
-			<ul class="navbar-nav nav-flex-icons">
-			    <li class="nav-item">
-					<a class="nav-link" href="#">Logout</a>
-				</li>
-			</ul>
-		</div>
-		</div>
-
-	 
     </div>
   </nav>
-
-</header>
-  <!-- Start your project here-->
-	</br></br></br></br>
-	<center>
-	<table>
+ </header>
+ <div class="row">
+  <div class="col-md-12">
+    <ul class="stepper stepper-horizontal">
+      <li>
+      </li>
+      <li class="active">
+        <a href="payment.php">
+          <span class="circle">P</span>
+          <span class="label">Payment</span>
+        </a>
+      </li>
+      <li>
+      </li>
+    </ul>
+  </div>
+</div>
+<center>
+	<table width="200px" >
 		<td>
 		<div class="form-row">
-			<div class="col-md-7">
-				<input class="form-control mr-sm-5" type="text" placeholder="Search" aria-label="Search">
-			</div>
-			<div class="col-md-5">
-				<input name="query" class="btn btn-info btn-rounded btn-sm" type="submit" value="Search">
+				<input  placeholder="Enter Billing ID"class="form-control form-control-sm" type="text" name="account_no" required="required"/>
 			</div>
 		</div>
-	</td>
-	</table>
-	</center>
-	</br></br>
-  <div class="row d-flex justify-content-center modalWrapper">
-    <div class="text-center">
-      <a href="consumer1.php" class="btn btn-info btn-rounded btn-sm">Add<i
-          class="fas fa-plus-square ml-1"></i></a>
-    </div>
-        </div>
-      </div>
-    </div>
-	
-	<?php $results = mysqli_query($db, "SELECT * FROM consumer1"); ?>
-	
-	<table id="dtBasicExample" class="table table-striped table-bordered" cellspacing="0" width="100%">
-    <thead>
-      <tr>
-        <th class="th-sm">Account Number
-
-        </th>
-        <th class="th-sm">Name
-
-        </th>
-        <th class="th-sm">Address
-
-        </th>
-        <th class="th-sm">Meter Number
-
-        </th>
-		<th class="th-sm">Action
-        </th>
-      </tr>
-    </thead>
-    <tbody>
-     <?php while ($row = mysqli_fetch_array($results)) { ?>
-		<tr>
-			<td><?php echo $row['account_no']; ?></td>
-			<td><?php echo $row['fname']. "  " .$row['mname']. " " .$row['lname']; ?></td>
-			<td><?php echo $row['streetname'].", ".$row['barangayname'].", ".$row['cityname']; ?></td>
-			<td><?php echo $row['meterbrandno']; ?></td>
-			<td>
-			<div class="row">
-				<div class="col-md-5">
-					<div class="text-center">
-						<input type="submit" class="btn btn-info btn-rounded btn-sm buttonEdit" name="edit" value="Edit"/>
+	</table><br>
+	<table width="400px">
+	<td>
+		<div class="form-row">
+				<div class="col-md-2.5">
+					<label>Mode of Payment</label>
+				</div>
+					<div class="col-md-4">
+						<select class="form-control form-control-sm" name="mode">
+							<option value="residential">Cash</option>
+							<option value="commercial">Check</option>>
+						</select>
 					</div>
 				</div>
-				<div class="col-md-2">
-					<div class="text-center">
-						<input type="submit" class="btn btn-danger btn-sm btn-rounded buttonDelete" name="del" value="Delete"/>
-					</div>
-				</div>
+		</div></br>
+		<div class="form-row">
+			<div class="col-md-2.5">
+				<label>Date Payed</label>
 			</div>
-			</td>
-		</tr>
-	<?php } ?>
-    </tbody>
-    <tfoot>
-      <tr>
-        <th>Account Number
-        </th>
-        <th>Name
-        </th>
-        <th>Address
-        </th>
-        <th>Meter Number
-        </th>
-	    <th>Action
-        </th>
-      </tr>
-    </tfoot>
-  </table>
-</div>
-
-</body>
-</html>
+		<div class="form-row">
+			<div class="col-md-12">
+				<input class="form-control form-control-sm" type="date" name="datepayed" required="required"/>
+			</div>
+		</div>
+	</table>
+</center>
   <!-- /Start your project here-->
 
   <!-- SCRIPTS -->
   <!-- JQuery -->
-   <script type="text/javascript" src="js/table.js"></script>
   <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
   <!-- Bootstrap tooltips -->
   <script type="text/javascript" src="js/popper.min.js"></script>
