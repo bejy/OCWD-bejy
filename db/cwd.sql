@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 21, 2019 at 07:59 PM
+-- Generation Time: Mar 12, 2019 at 12:36 AM
 -- Server version: 10.1.19-MariaDB
 -- PHP Version: 5.6.28
 
@@ -27,6 +27,7 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `consumer1` (
+  `consumer_id` int(11) NOT NULL,
   `account_no` int(11) NOT NULL,
   `fname` varchar(100) NOT NULL,
   `mname` varchar(100) NOT NULL,
@@ -52,13 +53,6 @@ CREATE TABLE `consumer1` (
   `initread` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `consumer1`
---
-
-INSERT INTO `consumer1` (`account_no`, `fname`, `mname`, `lname`, `bdate`, `bplace`, `cstatus`, `cnum`, `occupation`, `momname`, `dadname`, `spousename`, `streetname`, `barangayname`, `cityname`, `resicom`, `pubpriv`, `senior`, `pwd`, `monthincome`, `dateinstalled`, `meterbrandno`, `initread`) VALUES
-(1, 'brian', 'barredo', 'cabantac', '2019-02-06', 'tuyabang alto', 'married', '0939806324', 'student', 'mama', 'papa', 'baby', '7', 'tuyabang', 'oroquieta', 'residential', 'private', '', '', '5000', '2019-02-21', 'abc123', '123');
-
 -- --------------------------------------------------------
 
 --
@@ -81,24 +75,58 @@ INSERT INTO `login` (`id`, `name`, `password`) VALUES
 -- --------------------------------------------------------
 
 --
--- Table structure for table `rates`
+-- Table structure for table `penalty`
 --
 
-CREATE TABLE `rates` (
-  `id` int(11) NOT NULL,
-  `residential` int(11) NOT NULL,
-  `commercial` int(11) NOT NULL,
-  `senior` int(11) NOT NULL,
-  `pwd` int(11) NOT NULL,
+CREATE TABLE `penalty` (
+  `id_penalty` int(11) NOT NULL,
   `penalty` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
--- Dumping data for table `rates`
+-- Dumping data for table `penalty`
 --
 
-INSERT INTO `rates` (`id`, `residential`, `commercial`, `senior`, `pwd`, `penalty`) VALUES
-(1, 1, 1, 2, 2, 3);
+INSERT INTO `penalty` (`id_penalty`, `penalty`) VALUES
+(1, 3);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `resicom`
+--
+
+CREATE TABLE `resicom` (
+  `id_resicom` int(11) NOT NULL,
+  `residential` int(11) NOT NULL,
+  `commercial` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `resicom`
+--
+
+INSERT INTO `resicom` (`id_resicom`, `residential`, `commercial`) VALUES
+(1, 2, 2);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `seniorpwd`
+--
+
+CREATE TABLE `seniorpwd` (
+  `id` int(11) NOT NULL,
+  `senior` int(11) NOT NULL,
+  `pwd` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `seniorpwd`
+--
+
+INSERT INTO `seniorpwd` (`id`, `senior`, `pwd`) VALUES
+(1, 22, 22);
 
 --
 -- Indexes for dumped tables
@@ -108,7 +136,7 @@ INSERT INTO `rates` (`id`, `residential`, `commercial`, `senior`, `pwd`, `penalt
 -- Indexes for table `consumer1`
 --
 ALTER TABLE `consumer1`
-  ADD PRIMARY KEY (`account_no`);
+  ADD PRIMARY KEY (`consumer_id`);
 
 --
 -- Indexes for table `login`
@@ -117,9 +145,21 @@ ALTER TABLE `login`
   ADD PRIMARY KEY (`id`);
 
 --
--- Indexes for table `rates`
+-- Indexes for table `penalty`
 --
-ALTER TABLE `rates`
+ALTER TABLE `penalty`
+  ADD PRIMARY KEY (`id_penalty`);
+
+--
+-- Indexes for table `resicom`
+--
+ALTER TABLE `resicom`
+  ADD PRIMARY KEY (`id_resicom`);
+
+--
+-- Indexes for table `seniorpwd`
+--
+ALTER TABLE `seniorpwd`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -127,14 +167,29 @@ ALTER TABLE `rates`
 --
 
 --
+-- AUTO_INCREMENT for table `consumer1`
+--
+ALTER TABLE `consumer1`
+  MODIFY `consumer_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+--
 -- AUTO_INCREMENT for table `login`
 --
 ALTER TABLE `login`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 --
--- AUTO_INCREMENT for table `rates`
+-- AUTO_INCREMENT for table `penalty`
 --
-ALTER TABLE `rates`
+ALTER TABLE `penalty`
+  MODIFY `id_penalty` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `resicom`
+--
+ALTER TABLE `resicom`
+  MODIFY `id_resicom` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+--
+-- AUTO_INCREMENT for table `seniorpwd`
+--
+ALTER TABLE `seniorpwd`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

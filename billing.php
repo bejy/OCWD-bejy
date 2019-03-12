@@ -1,24 +1,57 @@
+<?php
+include('server.php');
+	if (isset($_GET['edit'])) {
+		$account_no = $_GET['edit'];
+		$update = true;
+		$record = mysqli_query($db, "SELECT * FROM consumer1 WHERE account_no=$account_no");
+
+			$n = mysqli_fetch_array($record);
+			$consumer_id=$n['consumer_id'];
+			$account_no=$n['account_no'];
+			$fname= $n['fname'];
+			$mname=$n['mname'];
+			$lname= $n['lname'];
+			$bdate=$n['bdate'];
+			$bplace= $n['bplace'];
+			$cstatus=$n['cstatus'];
+			$cnum= $n['cnum'];
+			$occupation = $n['occupation'];
+			$momname=$n['momname'];
+			$dadname= $n['dadname'];
+			$spousename = $n['spousename'];
+			$streetname=$n['streetname'];
+			$barangayname= $n['barangayname'];
+			$cityname=$n['cityname'];
+			$resicom= $n['resicom'];
+			$pubpriv=$n['pubpriv'];
+			$senior= $n['senior'];
+			$pwd=$n['pwd'];
+			$monthincome=$n['monthincome'];
+			$dateinstalled = $n['dateinstalled'];
+			$meterbrandno=$n['meterbrandno'];
+			$initread= $n['initread'];
+		}
+
+?>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>CWD</title>
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
+  <title>WD</title>
   <!-- Bootstrap core CSS -->
   <link href="css/bootstrap.min.css" rel="stylesheet">
   <!-- Material Design Bootstrap -->
   <link href="css/mdb.min.css" rel="stylesheet">
   <!-- Your custom styles (optional) -->
   <link href="css/style.css" rel="stylesheet">
+
 </head>
-
 <body>
-<form method="post" action="consumer.php"/>
-
+<form method="post" action="server.php"/>
+<!--Main Navigation-->
 <header>
   <nav class="navbar fixed-top navbar-expand-lg navbar-dark indigo scrolling-navbar">
     <a class="navbar-brand" href="#"><strong>Water District</strong></a>
@@ -32,7 +65,7 @@
           <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="billing.php">Billing</a>
+          <a class="nav-link" href="#">Billing</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="payment.php">Payment</a>
@@ -47,16 +80,17 @@
 	 </ul>
     </div>
   </nav>
- </header></br>
- <div class="row">
+</header>
+<br>
+<div class="row">
   <div class="col-md-12">
     <ul class="stepper stepper-horizontal">
       <li>
       </li>
       <li class="active">
-        <a href="payment.php">
-          <span class="circle">P</span>
-          <span class="label">Payment</span>
+        <a href="edit.php">
+          <span class="circle">B</span>
+          <span class="label">Billing</span>
         </a>
       </li>
       <li>
@@ -64,40 +98,16 @@
     </ul>
   </div>
 </div>
+
 <center>
-<table width="300px">
+<table width="200px">
 <td>
-	<div class="form-row">
-		<div class="col-md-7">
-			<input  placeholder="Enter Billing ID"class="form-control form-control-sm" type="text" name="account_no" required="required"/>
-		</div>
-		<div class="col-md-3">
-				<label>Billing ID</label>
-		</div>
-	</div><br>
-	<div class="form-row">
-			<div class="col-md-7">
-				<input class="form-control form-control-sm" type="date" name="datepayed" required="required"/>
-			</div>
-			<div class="col-md-2.5">
-				<label>Date Payed</label>
-			</div>
-	</div><br>
-	<div class="form-row">	
-		<div class="col-md-7">
-			<select class="form-control form-control-sm" name="mode">
-				<option value="residential">Cash</option>
-					<option value="commercial">Check</option>>
-			</select>
-		</div>
-		<div class="col-md-2.5">
-			<label>Mode of Payment</label>
-		</div>
-	</div>
+ <div class="col-md-12">
+	<h1>Wala Pa!!</h1>
+</div>
+</td>
 </table>
-</center><br>
-
-
+</center>
   <!-- SCRIPTS -->
   <!-- JQuery -->
   <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
@@ -110,3 +120,6 @@
 </body>
 
 </html>
+
+
+

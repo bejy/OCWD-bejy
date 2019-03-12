@@ -1,6 +1,6 @@
-<?php include('connect.php')?>
+<?php include('server.php')?>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
   <meta charset="utf-8">
@@ -18,9 +18,10 @@
 </head>
 
 <body>
-<form method="post" action=""/>
+<form method="post" action="server.php"/>
 <header>
-  <nav class="navbar fixed-top navbar-expand-lg navbar-dark pink scrolling-navbar">
+
+  <nav class="navbar fixed-top navbar-expand-lg navbar-dark indigo scrolling-navbar">
     <a class="navbar-brand" href="#"><strong>Water District</strong></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -32,7 +33,7 @@
           <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Billing</a>
+          <a class="nav-link" href="billing.php">Billing</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="payment.php">Payment</a>
@@ -47,7 +48,7 @@
 	 </ul>
     </div>
   </nav>
-</header>
+</header></br>
 <div class="row">
   <div class="col-md-12">
     <ul class="stepper stepper-horizontal">
@@ -65,9 +66,9 @@
   </div>
 </div>
 <center>
-<table width="700px">
+<table width="450px">
 <td>
-	<?php $results = mysqli_query($db, "SELECT * FROM rates"); ?>
+	<?php $results = mysqli_query($db, "SELECT * FROM resicom"); ?>
 	<table id="dtBasicExample" class="table table-striped table-bordered" cellspacing="0" width="100%">
     <thead>
       <tr>
@@ -84,19 +85,14 @@
     <tbody>
      <?php while ($row = mysqli_fetch_array($results)) { ?>
 		<tr>
-			<td><?php echo $row['residential']; ?></td>
-			<td><?php echo $row['commercial']; ?></td>
+			<td><?php echo "₱". " " .$row['residential']; ?></td>
+			<td><?php echo "₱". " " .$row['commercial']; ?></td>
 			<td>
 			
 			<div class="row">
 				<div class="col-md-3">
 					<div class="text-center">
-						<input type="submit" name="editi1" class="btn btn-info btn-rounded btn-sm buttonEdit" value="Edit">
-					</div>
-				</div>
-				<div class="col-md-4">
-					<div class="text-center">
-						<input type="submit" name="del1" class="btn btn-danger btn-sm btn-rounded buttonDelete" value="Delete">
+						<a class="btn btn-info btn-rounded btn-sm buttonEdit" data-toggle="modal" data-target="#modalLoginForm">Edit</a>
 					</div>
 				</div>
 			</div>
@@ -113,22 +109,21 @@
 		<th class="th-sm">Discount
 
         </th>
+		
     </thead>
+		<?php } ?>
+	<?php $results1 = mysqli_query($db, "SELECT * FROM seniorpwd"); ?>
     <tbody>
+	  <?php while ($row = mysqli_fetch_array($results1)) { ?>
 		<tr>
-			<td><?php echo $row['senior']; ?></td>
-			<td><?php echo $row['pwd']; ?></td>
+			<td><?php echo "₱". " " .$row['senior']; ?></td>
+			<td><?php echo "₱". " " .$row['pwd']; ?></td>
 			<td>
 			
 			<div class="row">
 				<div class="col-md-3">
 					<div class="text-center">
-						<input type="submit" name="edit2" class="btn btn-info btn-rounded btn-sm buttonEdit" value="Edit">
-					</div>
-				</div>
-				<div class="col-md-4">
-					<div class="text-center">
-						<input type="submit" name="del2" class="btn btn-danger btn-sm btn-rounded buttonDelete" value="Delete">
+						<a class="btn btn-info btn-rounded btn-sm buttonEdit" data-toggle="modal" data-target="#modalLoginForm1">Edit</a>
 					</div>
 				</div>
 			</div>
@@ -144,28 +139,140 @@
 
         </th>
     </thead>
+	<?php } ?>
+	<?php $results2 = mysqli_query($db, "SELECT * FROM penalty"); ?>
     <tbody>
+		  <?php while ($row = mysqli_fetch_array($results2)) { ?>
 		<tr>
-			<td><?php echo $row['penalty']; ?></td>
+			<td><?php echo "₱". " " .$row['penalty']; ?></td>
 			<td></td>
 			<td>
 			
 			<div class="row">
 				<div class="col-md-3">
 					<div class="text-center">
-						<input type="submit"  name="edit3" class="btn btn-info btn-rounded btn-sm buttonEdit" value="Edit">
-					</div>
-				</div>
-				<div class="col-md-4">
-					<div class="text-center">
-						<input type="submit" namee="del3" class="btn btn-danger btn-sm btn-rounded buttonDelete" value="Delete">
+							<a class="btn btn-info btn-rounded btn-sm buttonEdit" data-toggle="modal" data-target="#modalLoginForm2">Edit</a>
 					</div>
 				</div>
 			</div>
 			</td>
 		</tr>
-	<?php } ?>
+
     </tbody>
+	
+	<?php } ?>
+  <!-- resicom modal -->
+  
+<div class="modal fade" id="modalLoginForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Residential/Commercial  Rates</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+	  <center>
+	 <div class="modal-body mx-1">
+     <div class="form-row">
+		<div class="col-md-3">
+			<label>Residential</label>
+		</div>
+		<div class="col-md-6">
+			<input  class="form-control form-control-sm" type="number" name="fname" placeholder="₱" value="<?php echo $residential; ?>"/>
+		</div>
+	  </div>
+	</div>
+	<div class="modal-body mx-1">
+	  <div class="form-row">
+   		<div class="col-md-3">
+			<label>Commercial</label>
+		</div>
+		<div class="col-md-6">
+			<input  class="form-control form-control-sm" type="number"  placeholder="₱"/>
+		</div>
+	</div>
+    </div>
+      <div class="modal-footer d-flex justify-content-center">
+        <input type="submit" class="btn btn-info btn-rounded btn-sm buttonEdit" name="update1" value="UPDATE"/>
+      </div>
+	</div>
+    </div>
+</div>
+
+
+  <!-- seniorpwd modal -->
+  
+<div class="modal fade" id="modalLoginForm1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Senior/PWD  Discounts</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+	  <center>
+	 <div class="modal-body mx-1">
+     <div class="form-row">
+		<div class="col-md-3">
+			<label>Senior</label>
+		</div>
+		<div class="col-md-6">
+			<input  class="form-control form-control-sm" type="number" placeholder="₱"/>
+		</div>
+	  </div>
+	</div>
+	<div class="modal-body mx-1">
+	  <div class="form-row">
+   		<div class="col-md-3">
+			<label>PWD</label>
+		</div>
+		<div class="col-md-6">
+			<input  class="form-control form-control-sm" type="number" name="update2" placeholder="₱"/>
+		</div>
+	</div>
+    </div>
+      <div class="modal-footer d-flex justify-content-center">
+		<input type="submit" class="btn btn-info btn-rounded btn-sm buttonEdit" value="UPDATE"/>
+      </div>
+	</div>
+    </div>
+  </div>
+
+  
+   <!-- penalty --> 
+   
+  <div class="modal fade" id="modalLoginForm2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header text-center">
+        <h4 class="modal-title w-100 font-weight-bold">Penalty</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+	  <center>
+	 <div class="modal-body mx-1">
+     <div class="form-row">
+		<div class="col-md-3">
+			<label>Penalty</label>
+		</div>
+		<div class="col-md-6">
+			<input  class="form-control form-control-sm" type="number" placeholder="₱"/>
+		</div>
+	  </div>
+	</div>
+      <div class="modal-footer d-flex justify-content-center">
+       <input type="submit" class="btn btn-info btn-rounded btn-sm buttonEdit" name="update3" value="UPDATE"/>
+      </div>
+	</div>
+    </div>
+  </div>
+</div>
 </td>
 </table>
 </center>
@@ -179,5 +286,4 @@
   <!-- MDB core JavaScript -->
   <script type="text/javascript" src="js/mdb.js"></script>
 </body>
-
 </html>

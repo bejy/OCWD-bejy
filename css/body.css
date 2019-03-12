@@ -1,5 +1,18 @@
+body{
+	background: #fff url(../images/water.jpg) repeat top left;
+	background-repeat: no-repeat;
+	background-size: 1500px;
+	font-weight: 400px;
+	font-size: 18px;
+	color: #1d3c41;
+	overflow-y: scroll;
+}
 
 .tr-color-selected{
 background-color: hsla(196, 77%, 55%, 0.3) !important;
 transition: all .2s ease-in;
+}
+
+.modal {
+    height: 100%; //set a desired number
 }

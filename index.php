@@ -1,4 +1,5 @@
-<?php include('consumer.php')?>
+<?php include('server.php')?>;
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -10,19 +11,18 @@
   <!-- Font Awesome -->
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
   <!-- Bootstrap core CSS -->
-  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/bootstrap.css" rel="stylesheet">
   <!-- Material Design Bootstrap -->
   <link href="css/mdb.min.css" rel="stylesheet">
   <!-- Your custom styles (optional) -->
   <link href="css/style.css" rel="stylesheet">
-   <link href="css/body.css" rel="stylesheet">
 </head>
 
 <body>
-<form method="post" action="consumer.php"/>
+<form method="post" action="server.php"/>
 
 <header>
-  <nav class="navbar fixed-top navbar-expand-lg navbar-dark pink scrolling-navbar">
+  <nav class="navbar fixed-top navbar-expand-lg navbar-dark indigo scrolling-navbar">
     <a class="navbar-brand" href="#"><strong>Water District</strong></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -30,11 +30,11 @@
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
-        <li class="nav-item active">
-          <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
+        <li class="nav-item">
+          <a class="nav-link" href="index.php">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Billing</a>
+          <a class="nav-link" href="billing.php">Billing</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="payment.php">Payment</a>
@@ -60,12 +60,11 @@
 	 
     </div>
   </nav>
-
 </header>
-  <!-- Start your project here-->
-	</br></br></br></br>
 	<center>
+	</br></br></br></br>
 	<table>
+
 		<td>
 		<div class="form-row">
 			<div class="col-md-7">
@@ -78,15 +77,16 @@
 	</td>
 	</table>
 	</center>
-	</br></br>
-  <div class="row d-flex justify-content-center modalWrapper">
-    <div class="text-center">
-      <a href="consumer1.php" class="btn btn-info btn-rounded btn-sm">Add<i
+	</br>
+
+	<table style="float:left">
+	<td>
+      <a href="consumer1.php" class="btn btn-info btn-rounded btn-lg">Add<i
           class="fas fa-plus-square ml-1"></i></a>
-    </div>
-        </div>
-      </div>
-    </div>
+	</td>
+	</table>
+
+
 	
 	<?php $results = mysqli_query($db, "SELECT * FROM consumer1"); ?>
 	
@@ -120,12 +120,12 @@
 			<div class="row">
 				<div class="col-md-5">
 					<div class="text-center">
-						<input type="submit" class="btn btn-info btn-rounded btn-sm buttonEdit" name="edit" value="Edit"/>
+						<a href="edit.php?edit=<?php echo $row['account_no']; ?>" class="btn btn-info btn-rounded btn-sm buttonEdit">Edit</a>
 					</div>
 				</div>
 				<div class="col-md-2">
 					<div class="text-center">
-						<input type="submit" class="btn btn-danger btn-sm btn-rounded buttonDelete" name="del" value="Delete"/>
+						<a href="index.php?delete=<?php echo $row['consumer_id']; ?>" class="btn btn-danger btn-sm btn-rounded buttonDelete"/>Delete</a>
 					</div>
 				</div>
 			</div>
@@ -149,6 +149,7 @@
     </tfoot>
   </table>
 </div>
+
 
 </body>
 </html>

@@ -1,6 +1,40 @@
-<?php include('server.php')?>
+<?php
+include('server.php');
+	if (isset($_GET['edit'])) {
+		$account_no = $_GET['edit'];
+		$update = true;
+		$record = mysqli_query($db, "SELECT * FROM consumer1 WHERE account_no=$account_no");
+
+			$n = mysqli_fetch_array($record);
+			$consumer_id=$n['consumer_id'];
+			$account_no=$n['account_no'];
+			$fname= $n['fname'];
+			$mname=$n['mname'];
+			$lname= $n['lname'];
+			$bdate=$n['bdate'];
+			$bplace= $n['bplace'];
+			$cstatus=$n['cstatus'];
+			$cnum= $n['cnum'];
+			$occupation = $n['occupation'];
+			$momname=$n['momname'];
+			$dadname= $n['dadname'];
+			$spousename = $n['spousename'];
+			$streetname=$n['streetname'];
+			$barangayname= $n['barangayname'];
+			$cityname=$n['cityname'];
+			$resicom= $n['resicom'];
+			$pubpriv=$n['pubpriv'];
+			$senior= $n['senior'];
+			$pwd=$n['pwd'];
+			$monthincome=$n['monthincome'];
+			$dateinstalled = $n['dateinstalled'];
+			$meterbrandno=$n['meterbrandno'];
+			$initread= $n['initread'];
+		}
+
+?>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
   <meta charset="utf-8">
@@ -54,9 +88,9 @@
       <li>
       </li>
       <li class="active">
-        <a href="consumer1.php">
+        <a href="edit.php">
           <span class="circle">C</span>
-          <span class="label">Add Consumer</span>
+          <span class="label">Edit Consumer</span>
         </a>
       </li>
       <li>
@@ -68,35 +102,37 @@
 <center>
 <table width="700px">
 <td>
+	<input type="hidden" name="consumer_id" value="<?php echo $consumer_id; ?>">
+	
 	<div class="form-row">
 		<div class="col-md-3">
 			<label>Account Number </label>
-			<input  class="form-control form-control-sm" type="text" name="account_no" required="required"/></br>
+			<input  class="form-control form-control-sm" type="text" name="account_no" value="<?php echo $account_no; ?>"/></br>
 		</div>
 	</div>	
 	<div class="form-row">
 		<div class="col-md-4">
 			<label>First Name  </label>
-			<input  class="form-control form-control-sm" type="text" name="fname" required="required"/>
+			<input  class="form-control form-control-sm" type="text" name="fname" value="<?php echo $fname; ?>"/>
 		</div>
 		<div class="col-md-4">
 			<label>Middle Name </label>
-			<input  class="form-control form-control-sm" type="text" name="mname" required="required"/></br>
+			<input  class="form-control form-control-sm" type="text" name="mname" value="<?php echo $mname; ?>"/></br>
 		</div >
 		<div class="col-md-4">
 		<label>Last Name </label>
-		<input  class="form-control form-control-sm" type="text" name="lname" required="required"/></br>
+		<input  class="form-control form-control-sm" type="text" name="lname" value="<?php echo $lname; ?>"/></br>
 		</div>
 	</div>
 	
 	<div class="form-row">
 		<div class="col-md-2">
 			<label>Birthdate </label>
-			<input  class="form-control form-control-sm" type="date" name="bdate" required="required"/></br>
+			<input  class="form-control form-control-sm" type="date" name="bdate"  value="<?php echo $bdate; ?>"/></br>
 		</div>
 		<div class="col-md-6">
 			<label>Birthplace  </label>
-			<input  class="form-control form-control-sm" type="text" name="bplace" required="required"/></br>
+			<input  class="form-control form-control-sm" type="text" name="bplace"  value="<?php echo $bplace; ?>"/></br>
 		</div>
 	</div>
 	<div class="form-row">
@@ -110,29 +146,29 @@
 		</div>
 		<div class="col-md-4">
 			<label>Contact Number </label>
-			<input  class="form-control form-control-sm" type="text" name="cnum" required="required"/></br>
+			<input  class="form-control form-control-sm" type="text" name="cnum"  value="<?php echo $cnum; ?>"/></br>
 		</div>
 
 
 
 		<div class="col-md-5">
 			<label>Occupation  </label>
-			<input  class="form-control form-control-sm" type="text" name="occupation" required="required"/></br>
+			<input  class="form-control form-control-sm" type="text" name="occupation"value="<?php echo $occupation; ?>"/></br>
 		</div>
 	</div>
 	<div class="form-row">
 
 		<div class="col-md-2">
 			<label>Street/Purok  </label>
-			<input class="form-control form-control-sm" type="text" name="streetname" required="required"/></br>
+			<input class="form-control form-control-sm" type="text" name="streetname" value="<?php echo $streetname; ?>"/></br>
 		</div>
 		<div class="col-md-3">
 			<label>Barangay </label>
-			<input class="form-control form-control-sm" type="text" name="barangayname" required="required"/></br>
+			<input class="form-control form-control-sm" type="text" name="barangayname" value="<?php echo $barangayname; ?>"/></br>
 		</div>
 		<div class="col-md-3">
 			<label>City: </label>
-			<input class="form-control form-control-sm" type="text" name="cityname" required="required"/></br>
+			<input class="form-control form-control-sm" type="text" name="cityname" value="<?php echo $cityname; ?>"/></br>
 		</div>
 	</div>
 	
@@ -144,15 +180,15 @@
 	<div class="form-row">
 		<div class="col-md-4">
 			<label>Mother's Name  </label>
-			<input  class="form-control form-control-sm" type="text" name="momname" required="required"/></br>
+			<input  class="form-control form-control-sm" type="text" name="momname"  value="<?php echo $momname; ?>"/></br>
 		</div>
 		<div class="col-md-4">
 		<label>Father's Name  </label>
-		<input  class="form-control form-control-sm" type="text" name="dadname" required="required"/></br>
+		<input  class="form-control form-control-sm" type="text" name="dadname" value="<?php echo $dadname; ?>"/></br>
 		</div>
 		<div class="col-md-4">
 		<label>Spouse's Name  </label>
-		<input  class="form-control form-control-sm" type="text" name="spousename" required="required"/></br>
+		<input  class="form-control form-control-sm" type="text" name="spousename" value="<?php echo $spousename; ?>"/></br>
 		</div>
 	
 	</div>
@@ -196,28 +232,28 @@
 	<div class="form-row">
 		<div class="col-md-4">	
 			<label>Monthly Income  </label>
-			<input class="form-control form-control-sm" type="number" name="monthincome" required="required" placeholder="₱"/></br>
+			<input class="form-control form-control-sm" type="number" name="monthincome" placeholder="₱" value="<?php echo $monthincome; ?>"/></br>
 		</div>
 	</div>
 	<div class="form-row">
 
 		<div class="col-md-2">
 			<label>Date Installed  </label>
-			<input class="form-control form-control-sm" type="date" name="dateinstalled" required="required"/></br>
+			<input class="form-control form-control-sm" type="date" name="dateinstalled" value="<?php echo $dateinstalled; ?>"/></br>
 		</div>
 		<div class="col-md-3">
 			<label>Meter Brand and No </label>
-			<input class="form-control form-control-sm" type="text" name="meterbrandno" required="required"/></br>
+			<input class="form-control form-control-sm" type="text" name="meterbrandno"  value="<?php echo$meterbrandno;?>"/></br>
 		</div>
 		<div class="col-md-4">
 			<label>Initial Reading </label>
-			<input class="form-control form-control-sm" type="text" name="initread" required="required"/></br>
+			<input class="form-control form-control-sm" type="text" name="initread"  value="<?php echo$initread;?>"/></br>
 		</div>
 	</div>
 	<div class="form-row">
 			</br>
 			<div class="col-md-3">
-			<input class="btn btn-info btn-rounded btn-sm" type="submit" name="add" value="Add"></br></br></br>
+			<input class="btn btn-info btn-rounded btn-sm" type="submit" name="update" value="Edit"></br></br></br>
 		</div></br></br></br>
 	</div>
 </td>
