@@ -1,3 +1,4 @@
+<?php include('server.php')?>;
 <!DOCTYPE html>
 <html lang="en">
 
@@ -95,7 +96,76 @@
 		</div>
 	</div>
 </table>
-</center><br>
+</center><br></br>
+<center>
+<table width="500px" border="2px">  
+<td>
+<center>
+<?php $results = mysqli_query($db, "SELECT * FROM payment JOIN consumer1 WHERE 'payment.account_no'='consumer.account_no'"); ?>
+<table width="400px" style="margin:25px" > 
+<td>
+ <?php while ($row = mysqli_fetch_array($db, $results)) { ?>
+	<div class="form-row">
+		<div class="col-md-3">
+			<label>Receipt No.</label>
+			<label><td><?php echo $row['receipt_no']; ?></label>
+		</div>	
+		<div class="col-md-3">
+			<label></label>
+		</div>
+		<div class="col-md-3">
+			<label></label>
+		</div>
+	<div class="col-md-3">
+			<label>Billing ID </label>
+			<input  class="form-control form-control-sm" type="text" name="billin_id" required="required"/></br>
+		</div>
+
+	</div>	
+	<div class="form-row">
+		<div class="col-md-7">
+			<label>Name  </label>
+			<td><?php echo ucwords($row['fname']. "  " .$row['mname']. " " .$row['lname']); ?></td>
+		</div>
+		<div class="col-md-2">
+			<label></label>
+		</div>
+
+		<div class="col-md-3">
+			<label>Account No </label>
+			<td><?php echo $row['account_no']; ?></td>
+		</div>
+	</div>	
+	<?php } ?>	
+<table class="table table-bordered">
+  <thead>
+		<th></th>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Senior Discount</th>
+      <th>₱ 10</th>
+    </tr>
+    <tr>
+      <th>PWD Discounts</th>
+      <th>₱ 10</th>
+    </tr>
+	<tr>
+      <th>Date Payed</th>
+      <th>April</th>
+    </tr>
+	<tr>
+      <th>Mode of Payment</th>
+      <th>Cash</th>
+    </tr>
+	<tr>
+      <th>Amount</th>
+      <th>₱ 1000</th>
+    </tr>
+	</tbody>
+
+</td>
+</table>
 
 
   <!-- SCRIPTS -->

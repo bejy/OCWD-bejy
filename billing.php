@@ -1,38 +1,5 @@
-<?php
-include('server.php');
-	if (isset($_GET['edit'])) {
-		$account_no = $_GET['edit'];
-		$update = true;
-		$record = mysqli_query($db, "SELECT * FROM consumer1 WHERE account_no=$account_no");
+<?php include('server.php');?>
 
-			$n = mysqli_fetch_array($record);
-			$consumer_id=$n['consumer_id'];
-			$account_no=$n['account_no'];
-			$fname= $n['fname'];
-			$mname=$n['mname'];
-			$lname= $n['lname'];
-			$bdate=$n['bdate'];
-			$bplace= $n['bplace'];
-			$cstatus=$n['cstatus'];
-			$cnum= $n['cnum'];
-			$occupation = $n['occupation'];
-			$momname=$n['momname'];
-			$dadname= $n['dadname'];
-			$spousename = $n['spousename'];
-			$streetname=$n['streetname'];
-			$barangayname= $n['barangayname'];
-			$cityname=$n['cityname'];
-			$resicom= $n['resicom'];
-			$pubpriv=$n['pubpriv'];
-			$senior= $n['senior'];
-			$pwd=$n['pwd'];
-			$monthincome=$n['monthincome'];
-			$dateinstalled = $n['dateinstalled'];
-			$meterbrandno=$n['meterbrandno'];
-			$initread= $n['initread'];
-		}
-
-?>
 <!DOCTYPE html>
 <html>
 
@@ -50,7 +17,7 @@ include('server.php');
 
 </head>
 <body>
-<form method="post" action="server.php"/>
+<form method="post" action="billing2.php"/>
 <!--Main Navigation-->
 <header>
   <nav class="navbar fixed-top navbar-expand-lg navbar-dark indigo scrolling-navbar">
@@ -98,16 +65,47 @@ include('server.php');
     </ul>
   </div>
 </div>
-
 <center>
-<table width="200px">
+<table width="600px">
 <td>
- <div class="col-md-12">
-	<h1>Wala Pa!!</h1>
-</div>
+<center>
+
+<table width="500px"> 
+<td>
+<center>
+	<div class="form-row">
+		<div class="col-md-12">
+			<h3>Account Number<h3>
+		</div>
+	</div>
+</center>
+</td>
+</table>
+<table width="300px"> 
+<td>
+	<div class="form-row">
+		<div class="col-md-12">
+			<input class="form-control" placeholder="Account Number"class="form-control form-control-sm" type="text" name="account_no" required="required"/>
+		</div></br><//br>
+</td>
+</table>		
+<table width="500px"> 
+<td>
+<center>	
+		<div class="col-md-3">
+			<input class="btn btn-info btn-rounded btn-sm" type="submit" name="enter" value="Enter"/>
+		</div>
+</center>
+</td>
+</table>
+	</div><br>
+</td>
+</table>
 </td>
 </table>
 </center>
+</body>
+</html>
   <!-- SCRIPTS -->
   <!-- JQuery -->
   <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>

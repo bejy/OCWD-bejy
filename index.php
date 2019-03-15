@@ -20,7 +20,6 @@
 
 <body>
 <form method="post" action="server.php"/>
-
 <header>
   <nav class="navbar fixed-top navbar-expand-lg navbar-dark indigo scrolling-navbar">
     <a class="navbar-brand" href="#"><strong>Water District</strong></a>
@@ -51,7 +50,7 @@
 		<div class="col-md-12">
 			<ul class="navbar-nav nav-flex-icons">
 			    <li class="nav-item">
-					<a class="nav-link" href="#">Logout</a>
+					<a class="nav-link" href="login.php">Logout</a>
 				</li>
 			</ul>
 		</div>
@@ -86,8 +85,6 @@
 	</td>
 	</table>
 
-
-	
 	<?php $results = mysqli_query($db, "SELECT * FROM consumer1"); ?>
 	
 	<table id="dtBasicExample" class="table table-striped table-bordered" cellspacing="0" width="100%">
@@ -113,8 +110,8 @@
      <?php while ($row = mysqli_fetch_array($results)) { ?>
 		<tr>
 			<td><?php echo $row['account_no']; ?></td>
-			<td><?php echo $row['fname']. "  " .$row['mname']. " " .$row['lname']; ?></td>
-			<td><?php echo $row['streetname'].", ".$row['barangayname'].", ".$row['cityname']; ?></td>
+			<td><?php echo ucwords($row['fname']. "  " .$row['mname']. " " .$row['lname']); ?></td>
+			<td><?php echo ucwords($row['streetname'].", ".$row['barangayname'].", ".$row['cityname']); ?></td>
 			<td><?php echo $row['meterbrandno']; ?></td>
 			<td>
 			<div class="row">
