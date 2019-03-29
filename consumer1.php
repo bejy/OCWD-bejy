@@ -64,7 +64,6 @@
     </ul>
   </div>
 </div>
-
 <center>
 <table width="700px">
 <td>
