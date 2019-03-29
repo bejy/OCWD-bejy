@@ -9,7 +9,6 @@
 	<input type="text" name="textsearch">
 	<button type="submit" name="searchbutton">Search</button>
 </form>
-
 <table style="float:left">
 
 	<?php $results = mysqli_query($db, "SELECT * FROM consumer1"); ?>
