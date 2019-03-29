@@ -71,7 +71,6 @@
     <button class="btn btn-info btn-block my-4" type="submit">login</button>
 
 </form>
-<!-- Default form login -->
 </table>
 </center>
 
