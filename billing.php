@@ -1,24 +1,24 @@
 <?php include('server.php');?>
-
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <meta http-equiv="x-ua-compatible" content="ie=edge">
-  <title>WD</title>
+  <title>CWD</title>
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css">
   <!-- Bootstrap core CSS -->
-  <link href="css/bootstrap.min.css" rel="stylesheet">
+  <link href="css/bootstrap.css" rel="stylesheet">
   <!-- Material Design Bootstrap -->
   <link href="css/mdb.min.css" rel="stylesheet">
   <!-- Your custom styles (optional) -->
   <link href="css/style.css" rel="stylesheet">
-
 </head>
+
 <body>
-<form method="post" action="billing2.php"/>
-<!--Main Navigation-->
+<form method="post" action="billing.php"/>
 <header>
   <nav class="navbar fixed-top navbar-expand-lg navbar-dark indigo scrolling-navbar">
     <a class="navbar-brand" href="#"><strong>Water District</strong></a>
@@ -29,13 +29,13 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item">
-          <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="home.php">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Billing</a>
+          <a class="nav-link" href="read.php">Billing</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="payment.php">Payment</a>
+          <a class="nav-link" href="resicom.php">Payment</a>
         </li>
         <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
@@ -55,7 +55,7 @@
       <li>
       </li>
       <li class="active">
-        <a href="edit.php">
+        <a href="billing.php">
           <span class="circle">B</span>
           <span class="label">Billing</span>
         </a>
@@ -64,50 +64,99 @@
       </li>
     </ul>
   </div>
-</div>
+  </div>
+	<center>
+	<table width="400px">
+		<td>
+		<div class="form-row">
+			<div class="col-md-7">
+				<input class="form-control mr-sm-5" type="text" name="valueToSearch" placeholder="Account Number" aria-label="Search">
+			</div>
+			<div class="col-md-5">
+				<input class="btn btn-info btn-rounded btn-sm" name="search" type="submit" value="Search">
+			</div>
+		</div>
+	</td>
+	</table>
+	</center>
+	</br>
+</div> 
 <center>
-<table width="600px">
+<br>
+<div id="myDIV">
+<table width="500px" border="2px">
 <td>
 <center>
-
-<table width="500px"> 
+<table width="95%" style="margin:20px">
 <td>
-<center>
+    <?php while ($row = mysqli_fetch_array($search_result)) { ?>
+	<input type="hidden" name="account_no" value="<?php echo $row['account_no'];?>">
 	<div class="form-row">
-		<div class="col-md-12">
-			<h3>Account Number<h3>
+		<div class="col-md-4">
+			<label>Account No.  </label>
+			<h4><label for="account_no"><?php echo $row['account_no']; ?></label></h4>
+		</div>
+	</div>	
+	<div class="form-row">
+		<div class="col-md-8">
+			<label>Name: </label>
+			<h4><label for="name"><?php echo ucwords($row['fname']. "  " .$row['mname']. " " .$row['lname']); ?></label></h4>
 		</div>
 	</div>
-</center>
-</td>
-</table>
-<table width="300px"> 
-<td>
 	<div class="form-row">
 		<div class="col-md-12">
-			<input class="form-control" placeholder="Account Number"class="form-control form-control-sm" type="text" name="account_no" required="required"/>
-		</div></br><//br>
-</td>
-</table>		
-<table width="500px"> 
-<td>
-<center>	
-		<div class="col-md-3">
-			<input class="btn btn-info btn-rounded btn-sm" type="submit" name="enter" value="Enter"/>
+			<label>Address  </label>
+			<h3><label for="address"><?php echo ucwords($row['streetname'].", ".$row['barangayname'].", ".$row['cityname']); ?></label></h3>
 		</div>
-</center>
+	</div>	
+		<div class="form-row">
+			<div class="col-md-5">
+			<label>Previous Reading </label>
+			<input  class="form-control form-control-lg" type="text" name="previous_reading" value="<?php echo $row['initread']; ?>"readonly/>
+		</div >
+		<div class="col-md-5">
+			<label>Present Reading  </label>
+			<input  class="form-control form-control-lg" type="text" name="present_reading"/>
+		</div>
+	</div>
+	
+	<div class="form-row">
+		<div class="col-md-5">
+			<label>Due Date </label>
+			<input  class="form-control form-control-lg" type="date" name="due_date"/></br>
+		</div>
+		<div class="col-md-5">
+			<label>Cutting Date </label>
+			<input  class="form-control form-control-lg" type="date" name="cutting_date"/></br>
+		</div>
+	</div>
+
+   </td>
+  </table>
+ </center>
+
 </td>
-</table>
-	</div><br>
-</td>
-</table>
-</td>
-</table>
-</center>
-</body>
-</html>
+  </table>
+</div>
+</div>
+ 				<div class="row">
+				<div class="col-md-12">
+					<div class="text-center">
+						<input class="btn btn-info btn-rounded btn-sm" type="submit" name="addbill" value="Add">
+
+					</div>
+				</div>
+
+			</div>
+<?php } ?>
+
+
+  <!-- /Start your project here-->
+
   <!-- SCRIPTS -->
   <!-- JQuery -->
+  <script type="text/javascript" src="js/print.js"></script>
+
   <script type="text/javascript" src="js/jquery-3.3.1.min.js"></script>
   <!-- Bootstrap tooltips -->
   <script type="text/javascript" src="js/popper.min.js"></script>
@@ -118,6 +167,3 @@
 </body>
 
 </html>
-
-
-

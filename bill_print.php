@@ -1,5 +1,26 @@
-<?php include('server10.php');?>
+<?php 	
+if(isset($_POST['search']))
+	{
+    	$valueToSearch = $_POST['valueToSearch'];
 
+   		$query = "SELECT * FROM consumer1, billing WHERE consumer1.account_no LIKE '%$valueToSearch' AND billing.account_no LIKE '$valueToSearch' ";
+   		$search_result = filterTable($query);
+    
+	}
+	else {
+    	$query = "SELECT consumer1.account_no, consumer1.fname, consumer1.mname, consumer1.lname, consumer1.streetname, consumer1.barangayname, consumer1.cityname, billing.billing_id, billing.present_reading, billing.previous_reading, billing.due_date, billing.cutting_date FROM consumer1 JOIN billing WHERE 'consumer1.account_no'='billing.account_no'";
+    	$search_result = filterTable($query);
+	}
+
+		function filterTable($query)
+	{
+   		$connect = mysqli_connect("localhost", "root", "", "cwd");
+    	$filter_Result = mysqli_query($connect, $query);
+    	return $filter_Result;
+	}
+	
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -19,7 +40,7 @@
 </head>
 
 <body>
-<form method="post" action="payment.php"/>
+<form method="post" action="bill_print.php"/>
 <header>
   <nav class="navbar fixed-top navbar-expand-lg navbar-dark indigo scrolling-navbar">
     <a class="navbar-brand" href="#"><strong>Water District</strong></a>
@@ -46,17 +67,6 @@
         </div>
       </li>
 	 </ul>
-	  <div class="row">
-		<div class="col-md-12">
-			<ul class="navbar-nav nav-flex-icons">
-			    <li class="nav-item">
-					<a class="nav-link" href="login.php">Logout</a>
-				</li>
-			</ul>
-		</div>
-		</div>
-
-	 
     </div>
   </nav>
 </header>
@@ -67,9 +77,9 @@
       <li>
       </li>
       <li class="active">
-        <a href="payment.php">
-          <span class="circle">P</span>
-          <span class="label">Payment</span>
+        <a href="bill_print.php">
+          <span class="circle">B</span>
+          <span class="label">Billing Print</span>
         </a>
       </li>
       <li>
@@ -78,12 +88,13 @@
   </div>
   </div>
 	<center>
+	
 	<table>
 
 		<td>
 		<div class="form-row">
 			<div class="col-md-7">
-				<input class="form-control mr-sm-5" type="text" name="valueToSearch" placeholder="Billing Number" aria-label="Search">
+				<input class="form-control mr-sm-5" type="text" name="valueToSearch" placeholder="Account Number" aria-label="Search">
 			</div>
 			<div class="col-md-5">
 				<input class="btn btn-info btn-rounded btn-sm" name="search" type="submit" value="Search">
@@ -94,27 +105,29 @@
 	</center>
 	</br>
 </div> 
+
 <center>
 <br>
+<div id="myDIV">
 <table width="500px" border="2px">
 <td>
 <center>
+<div id="printThis">
 <table width="95%" style="margin:20px">
 <td>
-    <?php if($row = mysqli_fetch_array($search_result)) { ?>
-	<input type="hidden" name="billing_id" value="<?php echo $row['billing_id'];?>">
-	<input type="hidden" name="account_no" value="<?php echo $row['account_no'];?>">
+    <?php while ($row = mysqli_fetch_array($search_result)) { ?>
+	<input type="hidden" name="b_id" value="<?php echo $row['b_id'];?>">
 	<div class="form-row">
 		<div class="col-md-4">
 			<label>Billing ID </label>
-			<input  class="form-control form-control-lg" type="text" name="billing_id" value="<?php echo $row['billing_id']; ?>"readonly/>
+			<h4><label for="billing_id"><?php echo $row['billing_id'];?></label></h4>
 		</div>
 		<div class="col-md-4">
+
 		</div>
 		<div class="col-md-4">
 			<label>Account No.  </label>
-
-			<input  class="form-control form-control-lg" type="text" name="account_no" value="<?php echo $row['account_no']; ?>"readonly/>
+			<h4><label for="account_no"><?php echo $row['account_no']; ?></label></h4>
 		</div>
 	</div>	
 	<div class="form-row">
@@ -129,36 +142,38 @@
 			<h3><label for="address"><?php echo ucwords($row['streetname'].", ".$row['barangayname'].", ".$row['cityname']); ?></label></h3>
 		</div>
 	</div>	
-	<div class="form-row">
-			<div class="col-md-4">
-				<label>Previous Reading  </label>
-					<h4><label for="previous_reading"><?php echo $row['previous_reading']; ?></label></h4>
-			</div>
-				<div class="col-md-4">
-				<label>Present Reading   </label>
-					<h4><label for="present_reading"><?php echo $row['present_reading']; ?></label></h4>
-			</div>
-	</div>
-	<div class="form-row">
-		<div class="col-md-5">
-			<label>Date Payed </label>
-			<input class="form-control form-control-lg" type="date" name="datepayed">
-		</div>
-		<div class="col-md-5">
-			<label>Mode of Payment</label>
-				<select name="modeofpayment" class="form-control form-control-lg">
-					<option value="cash">Cash</option>
-					<option value="check">Check</option>
-				</select> 
-		</div>
-
 		<div class="form-row">
-			<div class="col-md-6">
+			<div class="col-md-5">
+			<label>Previous Reading </label>
+			<h4><label for="previous_reading"><?php echo $row['previous_reading']; ?></label></h4>
+		</div >
+		<div class="col-md-5">
+			<label>Present Reading  </label>
+			<h4><label for="present_reading"><?php echo $row['present_reading']; ?></label></h4>
+		</div>
+	</div>
+	
+	<div class="form-row">
+		<div class="col-md-5">
+			<label>Due Date </label>
+			<h4><label for="due_date"><?php echo $date=$row['due_date']; ?></label></h4>
+		</div>
+		<div class="col-md-5">
+			<label>Cutting Date </label>
+				<h4><label for="due_date"><?php echo date('Y-m-d', strtotime($date. ' + 5 days')); ?></label></h4>
+		</div>
+	</div>
+	<div class="form-row">
+	
+	<div class="col-md-6">
 			<label>Amount </label>
-			 <h1><?php echo '₱'.($row['present_reading']-$row['previous_reading'])*($row['residential']/10);?></h1>
+			<h4><label for="previous_reading" id="previous_reading"><?php echo ($row['present_reading']-$row['previous_reading'])*12; ?></label></h4>
+	</div>
 
 	</div>
-	</div>
+
+</div>	
+
    </td>
   </table>
  </center>
@@ -167,17 +182,16 @@
   </table>
 </div>
 </div>
- 				<div class="row">
+ 			<div class="row">
 				<div class="col-md-12">
 					<div class="text-center">
-						<input class="btn btn-info btn-rounded btn-sm buttonEdit" type="submit" name="addpayment" value="Add">
-
-
+						<button id="btnPrint" type="button" class="btn btn-info btn-rounded btn-sm" >Print</button>
 					</div>
 				</div>
-
 			</div>
-	<?php } ?>
+				
+<?php } ?>
+  
 
   <!-- /Start your project here-->
 
@@ -192,7 +206,6 @@
   <script type="text/javascript" src="js/bootstrap.min.js"></script>
   <!-- MDB core JavaScript -->
   <script type="text/javascript" src="js/mdb.js"></script>
-
 </body>
 
 </html>

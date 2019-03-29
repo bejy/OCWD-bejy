@@ -20,7 +20,7 @@
 <!--Main Navigation-->
 <header>
   <nav class="navbar fixed-top navbar-expand-lg navbar-dark indigo scrolling-navbar">
-    <a class="navbar-brand" href="#"><strong>Water District</strong></a>
+    <a class="navbar-brand" href="home.php"><strong>Water District</strong></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -28,13 +28,13 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="home.php">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="billing.php">Billing</a>
+          <a class="nav-link" href="read.php">Billing</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="payment.php">Payment</a>
+          <a class="nav-link" href="resicom..php">Payment</a>
         </li>
         <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
@@ -90,7 +90,7 @@
 	</div>
 	
 	<div class="form-row">
-		<div class="col-md-2">
+		<div class="col-md-2.5">
 			<label>Birthdate </label>
 			<input  class="form-control form-control-sm" type="date" name="bdate" required="required"/></br>
 		</div>
@@ -136,16 +136,12 @@
 		</div>
 	</div>
 	
-</td>
-</table>
-<table width="700px">
-
-<td>	
 	<div class="form-row">
 		<div class="col-md-4">
 			<label>Mother's Name  </label>
 			<input  class="form-control form-control-sm" type="text" name="momname" required="required"/></br>
 		</div>
+
 		<div class="col-md-4">
 		<label>Father's Name  </label>
 		<input  class="form-control form-control-sm" type="text" name="dadname" required="required"/></br>
@@ -201,7 +197,7 @@
 	</div>
 	<div class="form-row">
 
-		<div class="col-md-2">
+		<div class="col-md-2.5">
 			<label>Date Installed  </label>
 			<input class="form-control form-control-sm" type="date" name="dateinstalled" required="required"/></br>
 		</div>

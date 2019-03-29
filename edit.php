@@ -62,13 +62,13 @@ include('server.php');
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
       <ul class="navbar-nav mr-auto">
         <li class="nav-item active">
-          <a class="nav-link" href="index.php">Home <span class="sr-only">(current)</span></a>
+          <a class="nav-link" href="home.php">Home</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="billing.php">Billing</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="payment.php">Payment</a>
+          <a class="nav-link" href="resicom.php">Payment</a>
         </li>
         <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
@@ -139,6 +139,7 @@ include('server.php');
 		<div class="col-md-2">
 			<label>Civil Status  </label>
 				<select name="cstatus" class="form-control form-control-sm">
+					<option value="<?php echo $cstatus; ?>"><?php echo $cstatus; ?></option>
 					<option value="single">Single</option>
 					<option value="married">Married</option>
 					<option value="widow">Widow</option>
@@ -197,6 +198,7 @@ include('server.php');
 		<div class="col-md-3">
 			<label>Type of Residence  </label>
 				<select class="form-control form-control-sm" name="resicom">
+					<option value="<?php echo $resicom; ?>"><?php echo $resicom; ?></option>
 					<option value="residential">Residential</option>
 					<option value="commercial">Commercial</option>>
 				</select> </br>
@@ -204,6 +206,7 @@ include('server.php');
 		<div class="col-md-3">
 			<label>Public or Private  </label>
 				<select class="form-control form-control-sm" name="pubpriv">
+				<option value="<?php echo $pubpriv; ?>"><?php echo $pubpriv; ?></option>
 					<option value="public">Public</option>
 					<option value="private">Private</option>>
 				</select> </br>
@@ -216,7 +219,7 @@ include('server.php');
 				<label >Senior or PWD : </label>
 			</div> 
 			<div class="custom-control custom-checkbox custom-control-inline">
-			  <input type="checkbox" class="custom-control-input" id="defaultInline1" name="senior">
+			  <input type="checkbox" class="custom-control-input" id="defaultInline1" name="senior" >
 			  <label class="custom-control-label" for="defaultInline1">Senior</label>
 			</div>
 	</div>
@@ -243,11 +246,11 @@ include('server.php');
 		</div>
 		<div class="col-md-3">
 			<label>Meter Brand and No </label>
-			<input class="form-control form-control-sm" type="text" name="meterbrandno"  value="<?php echo$meterbrandno;?>"/></br>
+			<input class="form-control form-control-sm" type="text" name="meterbrandno"  value="<?php echo $meterbrandno;?>"/></br>
 		</div>
 		<div class="col-md-4">
 			<label>Initial Reading </label>
-			<input class="form-control form-control-sm" type="text" name="initread"  value="<?php echo$initread;?>"/></br>
+			<input class="form-control form-control-sm" type="text" name="initread"  value="<?php echo $initread;?>"/></br>
 		</div>
 	</div>
 	<div class="form-row">
@@ -271,6 +274,7 @@ include('server.php');
 </body>
 
 </html>
+
 
 
 
