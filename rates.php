@@ -101,15 +101,11 @@
     <thead>
       <tr>
         <th class="th-sm">Senior
-
         </th>
         <th class="th-sm">PWD
-
         </th>
 		<th class="th-sm">Discount
-
-        </th>
-		
+        </th>	
     </thead>
 		<?php } ?>
 	<?php $results1 = mysqli_query($db, "SELECT * FROM seniorpwd"); ?>
