@@ -78,7 +78,6 @@ CREATE TABLE `consumer1` (
   `meterbrandno` varchar(100) NOT NULL,
   `initread` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
 --
 -- Dumping data for table `consumer1`
 --
