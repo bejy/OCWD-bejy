@@ -35,7 +35,6 @@ include('server.php');
   <link href="css/mdb.min.css" rel="stylesheet">
   <!-- Your custom styles (optional) -->
   <link href="css/style.css" rel="stylesheet">
-
 </head>
 <body>
 <form method="post" action="server.php"/>
