@@ -125,10 +125,6 @@
 			<label>Due Date </label>
 			<input  class="form-control form-control-lg" type="date" name="due_date"/></br>
 		</div>
-		<div class="col-md-5">
-			<label>Cutting Date </label>
-			<input  class="form-control form-control-lg" type="date" name="cutting_date"/></br>
-		</div>
 	</div>
 
    </td>
