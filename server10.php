@@ -65,7 +65,7 @@
 	if(isset($_POST['search']))
 	{
     	$valueToSearch = $_POST['valueToSearch'];
-		$query = "SELECT * FROM consumer1,billing,resicom WHERE billing.billing_id = '$valueToSearch'";
+		$query = "SELECT * FROM consumer1,billing,resicom WHERE billing.billing_id = '$valueToSearch' AND resicom='residential' AND consumer1.account_no=billing.account_no";
  		$search_result = filterTable($query);
    
 	}
