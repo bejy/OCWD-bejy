@@ -63,8 +63,8 @@
 	if(isset($_POST['search']))
 	{
     	$valueToSearch = $_POST['valueToSearch'];
-		$query = "SELECT * FROM consumer1,billing,resicom WHERE billing.billing_id LIKE '%$valueToSearch'";
- 	 $search_result = filterTable($query);
+		$query = "SELECT * FROM consumer1,billing,resicom WHERE billing.billing_id = '$valueToSearch' AND resicom='commercial' AND consumer1.account_no=billing.account_no";
+ 	 	$search_result = filterTable($query);
     
 	}
 	else {
